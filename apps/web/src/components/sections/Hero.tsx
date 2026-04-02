@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] md:min-h-screen flex items-center pt-28 pb-20 md:py-32 overflow-hidden bg-mesh">
+    <section className="relative min-h-[90vh] md:min-h-screen flex items-center pt-36 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-mesh">
       {/* Decorative Elements */}
       <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] bg-primary/20 rounded-full blur-[120px] -z-10 animate-pulse-subtle" />
       <div className="absolute bottom-[10%] right-[5%] w-[350px] h-[350px] bg-secondary/15 rounded-full blur-[100px] -z-10" />
