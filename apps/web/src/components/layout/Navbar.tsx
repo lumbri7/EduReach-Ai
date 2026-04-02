@@ -98,54 +98,62 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[51] md:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-md z-[51] md:hidden"
             />
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-background border-l shadow-2xl z-[52] md:hidden flex flex-col p-8 gap-6"
+              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-xs bg-white dark:bg-slate-950 border-l border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.3)] z-[52] md:hidden flex flex-col p-8 gap-8 overflow-y-auto"
             >
-              <div className="flex items-center justify-between mb-4">
-                <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-                  <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground">
-                    <BookOpen className="w-5 h-5" />
+              <div className="flex items-center justify-between">
+                <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
+                  <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20">
+                    <BookOpen className="w-6 h-6" />
                   </div>
-                  <span className="font-bold">EduReach AI</span>
+                  <span className="font-black tracking-tight text-xl">EduReach AI</span>
                 </Link>
                 <button 
                   onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-full hover:bg-accent text-foreground"
+                  className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 text-foreground transition-colors"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
-              <div className="flex flex-col gap-2">
-                {[...navLinks, { name: "How It Works", href: "/how-it-works" }].map((link) => (
+              <div className="flex flex-col gap-3 py-4">
+                {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     className={cn(
-                      "text-xl font-bold p-4 rounded-2xl transition-all active:scale-95",
-                      pathname === link.href ? "bg-primary text-primary-foreground shadow-lg" : "hover:bg-accent"
+                      "text-2xl font-black p-5 rounded-2xl transition-all active:scale-95 flex items-center justify-between group",
+                      pathname === link.href 
+                        ? "bg-primary text-primary-foreground shadow-xl shadow-primary/20" 
+                        : "text-foreground/70 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-foreground"
                     )}
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
+                    <Sparkles className={cn(
+                      "w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity",
+                      pathname === link.href ? "opacity-100" : ""
+                    )} />
                   </Link>
                 ))}
               </div>
               
-              <div className="mt-auto space-y-4">
-                <Button className="w-full rounded-2xl gap-3 py-7 text-xl font-bold shadow-xl shadow-primary/20">
+              <div className="mt-auto pt-8 border-t border-border/50 space-y-6">
+                <Button className="w-full h-16 rounded-2xl gap-4 text-xl font-black uppercase tracking-widest shadow-2xl shadow-primary/30 active:scale-95 transition-all">
                   <Download className="w-6 h-6" />
                   Download App
                 </Button>
-                <p className="text-center text-sm text-muted-foreground font-medium">
-                  Equal access to knowledge for everyone.
-                </p>
+                <div className="text-center space-y-2">
+                  <p className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em]">
+                    Equal Access <span className="italic text-primary">For All</span>
+                  </p>
+                </div>
               </div>
             </motion.div>
           </>
