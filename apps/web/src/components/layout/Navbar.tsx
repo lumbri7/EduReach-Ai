@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { name: "Features", href: "/features" },
   { name: "About", href: "/about" },
+  { name: "How It Works", href: "/how-it-works" },
+  { name: "Testimonials", href: "/testimonials" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -90,31 +92,63 @@ export function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 glass shadow-2xl border-b md:hidden flex flex-col p-6 gap-4"
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={cn(
-                  "text-lg font-medium p-2 rounded-lg transition-colors",
-                  pathname === link.href ? "bg-primary/10 text-primary" : "hover:bg-accent"
-                )}
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <hr className="border-border" />
-            <Button className="w-full rounded-xl gap-2 py-6 text-lg">
-              <Download className="w-5 h-5" />
-              Download App
-            </Button>
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[51] md:hidden"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-background border-l shadow-2xl z-[52] md:hidden flex flex-col p-8 gap-6"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
+                  <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground">
+                    <BookOpen className="w-5 h-5" />
+                  </div>
+                  <span className="font-bold">EduReach AI</span>
+                </Link>
+                <button 
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-full hover:bg-accent text-foreground"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                {[...navLinks, { name: "How It Works", href: "/how-it-works" }].map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={cn(
+                      "text-xl font-bold p-4 rounded-2xl transition-all active:scale-95",
+                      pathname === link.href ? "bg-primary text-primary-foreground shadow-lg" : "hover:bg-accent"
+                    )}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+              
+              <div className="mt-auto space-y-4">
+                <Button className="w-full rounded-2xl gap-3 py-7 text-xl font-bold shadow-xl shadow-primary/20">
+                  <Download className="w-6 h-6" />
+                  Download App
+                </Button>
+                <p className="text-center text-sm text-muted-foreground font-medium">
+                  Equal access to knowledge for everyone.
+                </p>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

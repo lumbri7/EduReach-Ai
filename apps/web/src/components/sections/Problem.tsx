@@ -32,54 +32,55 @@ const problems = [
 
 export function Problem() {
   return (
-    <section className="py-24 bg-white dark:bg-slate-950 overflow-hidden">
+    <section className="py-32 bg-white dark:bg-slate-950 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          {/* Visual */}
-          <AnimatedSection direction="right" className="lg:w-1/2 relative order-2 lg:order-1">
-            <div className="absolute inset-0 bg-red-500/5 rounded-full blur-3xl -z-10" />
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
-              <Image 
-                src="/problem-internet.png" 
-                alt="The Internet Problem" 
-                width={600} 
-                height={600}
-                className="object-cover"
-              />
-              <div className="absolute top-4 left-4 glass px-4 py-2 rounded-full text-red-500 font-bold flex items-center gap-2 animate-pulse">
-                <div className="w-2 h-2 rounded-full bg-red-500" />
-                No Signal Found
+        <div className="flex flex-col lg:flex-row gap-20 items-center">
+          {/* Visual Area */}
+          <div className="lg:w-1/2 relative order-2 lg:order-1 w-full max-w-xl mx-auto lg:max-w-none">
+            <AnimatedSection direction="right" className="relative">
+              <div className="absolute -inset-10 bg-destructive/5 rounded-full blur-[100px] -z-10 animate-pulse-subtle" />
+              <div className="relative rounded-[40px] overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
+                <Image 
+                  src="/problem-internet.png" 
+                  alt="The Internet Problem" 
+                  width={700} 
+                  height={700}
+                  className="object-cover"
+                />
+                <div className="absolute top-6 left-6 glass px-5 py-3 rounded-2xl text-destructive font-black flex items-center gap-3 animate-float border-destructive/20 shadow-xl">
+                  <div className="w-3 h-3 rounded-full bg-destructive animate-pulse" />
+                  <span className="tracking-tight uppercase text-sm">No Signal Found</span>
+                </div>
               </div>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
+          </div>
 
-          {/* Content */}
-          <div className="lg:w-1/2 space-y-8 order-1 lg:order-2">
-            <AnimatedSection direction="up">
-              <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-4">The Digital Divide</h2>
-              <h3 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                Why Traditional Apps <span className="text-red-500">Fail</span> in Villages
+          {/* Content Area */}
+          <div className="lg:w-1/2 space-y-10 order-1 lg:order-2">
+            <AnimatedSection direction="up" className="space-y-6">
+              <h2 className="text-sm font-black tracking-[0.3em] text-primary uppercase">The Digital Divide</h2>
+              <h3 className="text-4xl md:text-6xl font-black tracking-tight leading-[1.1]">
+                Why Traditional Apps <span className="text-destructive">Fail</span> in Villages
               </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                The current education revolution is built for 5G cities. But for millions of students in rural areas, the &quot;Loading...&quot; spinner is the only thing they see.
+              <p className="text-lg md:text-xl text-muted-foreground/90 leading-relaxed font-medium">
+                The current education revolution is built for 5G cities. But for millions of students in rural areas, the &quot;Loading...&quot; spinner is the only thing they see. 
               </p>
-
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 gap-6 pt-8">
+            <div className="grid grid-cols-1 gap-6 pt-4">
               {problems.map((problem, i) => (
                 <AnimatedSection 
                   key={problem.title} 
                   direction="up" 
                   delay={i * 0.1}
-                  className="flex gap-4 p-6 rounded-2xl border border-border/50 hover:border-primary/20 transition-all group"
+                  className="flex gap-6 p-8 rounded-3xl border border-border/50 hover:border-destructive/20 transition-all group bg-slate-50/30 dark:bg-slate-900/20"
                 >
-                  <div className={`w-12 h-12 rounded-xl ${problem.bg} flex items-center justify-center shrink-0 transition-transform group-hover:scale-110`}>
-                    <problem.icon className={`w-6 h-6 ${problem.color}`} />
+                  <div className={`w-16 h-16 rounded-2xl ${problem.bg} flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 shadow-sm`}>
+                    <problem.icon className={`w-8 h-8 ${problem.color}`} />
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-1">{problem.title}</h4>
-                    <p className="text-muted-foreground leading-relaxed">{problem.description}</p>
+                  <div className="space-y-1">
+                    <h4 className="text-2xl font-black tracking-tight">{problem.title}</h4>
+                    <p className="text-muted-foreground leading-relaxed font-medium">{problem.description}</p>
                   </div>
                 </AnimatedSection>
               ))}

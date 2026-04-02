@@ -47,19 +47,19 @@ const features = [
 
 export function Features() {
   return (
-    <section className="py-24 bg-slate-50/50 dark:bg-slate-900/10">
+    <section className="py-32 bg-slate-50/50 dark:bg-slate-900/10 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-20">
           <AnimatedSection direction="up">
-            <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-4">Core Capabilities</h2>
-            <h3 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Designed for Impact</h3>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Every feature is built with one goal: ensuring that learning never stops, regardless of the signal strength.
+            <h2 className="text-sm font-black tracking-[0.3em] text-primary uppercase mb-4">Core Capabilities</h2>
+            <h3 className="text-4xl md:text-6xl font-black tracking-tight mb-6">Designed for <span className="italic underline decoration-primary decoration-4 underline-offset-8">Impact</span></h3>
+            <p className="text-lg md:text-xl text-muted-foreground/90 leading-relaxed font-medium">
+              Every feature is built with one goal: ensuring that learning never stops, regardless of the signal strength in the village.
             </p>
           </AnimatedSection>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature) => (
             <FeatureCard 
               key={feature.title}
@@ -67,6 +67,7 @@ export function Features() {
               description={feature.description}
               icon={feature.icon}
               delay={feature.delay}
+              className="rounded-[32px] p-2"
             />
           ))}
         </div>

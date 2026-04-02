@@ -24,15 +24,14 @@ export function Solution() {
           {/* Content */}
           <div className="lg:w-1/2 space-y-8">
             <AnimatedSection direction="up">
-              <h2 className="text-sm font-bold tracking-widest text-secondary uppercase mb-4">The Solution</h2>
-              <h3 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+              <h2 className="text-sm font-black tracking-[0.2em] text-secondary uppercase mb-4">The Solution</h2>
+              <h3 className="text-4xl md:text-6xl font-black tracking-tight mb-6 leading-[1.1]">
                 Works Without Internet. <br />
                 <span className="text-secondary italic">Improves</span> With It.
               </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground/90 leading-relaxed font-medium">
                 EduReach AI is the first hybrid learning platform designed for the reality of rural infrastructure. 
                 Our platform doesn&apos;t just &quot;support&quot; offline mode—it is <strong>offline-first</strong>.
-
               </p>
             </AnimatedSection>
 
@@ -42,19 +41,19 @@ export function Solution() {
                   key={benefit} 
                   direction="up" 
                   delay={i * 0.1}
-                  className="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-border/50"
+                  className="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-border/50 hover:border-secondary/30 transition-all group"
                 >
-                  <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="w-4 h-4 text-secondary" />
+                  <div className="w-8 h-8 rounded-xl bg-secondary/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <CheckCircle2 className="w-5 h-5 text-secondary" />
                   </div>
-                  <span className="text-sm font-bold">{benefit}</span>
+                  <span className="text-base font-black tracking-tight">{benefit}</span>
                 </AnimatedSection>
               ))}
             </div>
 
             <AnimatedSection direction="up" delay={0.4}>
-              <Button size="lg" className="rounded-xl h-14 px-8 text-lg bg-secondary hover:bg-secondary/90 shadow-lg hover:shadow-secondary/20 transition-all gap-2 group">
-                <Smartphone className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <Button size="lg" className="h-16 px-10 text-xl font-bold rounded-2xl bg-secondary hover:bg-secondary/90 shadow-xl shadow-secondary/20 transition-all gap-3 group active:scale-95">
+                <Smartphone className="w-6 h-6 group-hover:rotate-12 transition-transform" />
                 Explore Features
               </Button>
             </AnimatedSection>
@@ -62,29 +61,30 @@ export function Solution() {
 
           {/* Visual */}
           <AnimatedSection direction="left" className="lg:w-1/2 relative group">
-            <div className="absolute -inset-4 bg-secondary/10 rounded-3xl blur-2xl -z-10 transition-all group-hover:bg-secondary/20" />
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white dark:border-slate-800">
+            <div className="absolute -inset-4 bg-secondary/10 rounded-[40px] blur-3xl -z-10 transition-all group-hover:bg-secondary/20" />
+            <div className="relative rounded-[40px] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border-8 border-white dark:border-slate-800">
               <Image 
                 src="/solution-offline.png" 
                 alt="EduReach AI Solution" 
-                width={600} 
-                height={600}
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                width={700} 
+                height={700}
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             
             {/* Overlay Badges */}
             <motion.div 
-               animate={{ x: [0, 5, 0] }}
-               transition={{ duration: 3, repeat: Infinity }}
-               className="absolute top-10 -right-4 glass p-4 rounded-2xl shadow-xl z-20 border-secondary/20"
+               animate={{ x: [0, 8, 0] }}
+               transition={{ duration: 4, repeat: Infinity }}
+               className="absolute top-12 -right-6 glass p-5 rounded-3xl shadow-2xl z-20 border-secondary/20 flex items-center gap-4"
             >
-              <div className="flex items-center gap-2">
-                <div className="p-2 rounded-lg bg-secondary text-white">
-                  <CloudLightning className="w-4 h-4" />
-                </div>
-                <p className="text-xs font-bold">Auto-Sync Active</p>
+              <div className="w-12 h-12 rounded-xl bg-secondary text-white flex items-center justify-center">
+                <CloudLightning className="w-7 h-7" />
+              </div>
+              <div>
+                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest leading-none mb-1">Status</p>
+                <p className="text-sm font-black">AUTO-SYNC ACTIVE</p>
               </div>
             </motion.div>
           </AnimatedSection>
