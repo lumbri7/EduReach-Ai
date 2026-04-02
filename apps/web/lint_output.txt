@@ -1,0 +1,51 @@
+
+> web@0.1.0 lint
+> eslint
+
+
+/home/adminuser/ayush/apps/web/src/app/about/page.tsx
+   5:10   warning  'motion' is defined but never used                               @typescript-eslint/no-unused-vars
+   6:10   warning  'Heart' is defined but never used                                @typescript-eslint/no-unused-vars
+  92:184  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  92:195  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/home/adminuser/ayush/apps/web/src/app/contact/page.tsx
+   4:10  warning  'motion' is defined but never used         @typescript-eslint/no-unused-vars
+   5:37  warning  'MessageSquare' is defined but never used  @typescript-eslint/no-unused-vars
+  10:10  warning  'Card' is defined but never used           @typescript-eslint/no-unused-vars
+  10:16  warning  'CardContent' is defined but never used    @typescript-eslint/no-unused-vars
+
+/home/adminuser/ayush/apps/web/src/app/features/page.tsx
+   4:10   warning  'motion' is defined but never used        @typescript-eslint/no-unused-vars
+   5:48   warning  'Smartphone' is defined but never used    @typescript-eslint/no-unused-vars
+   5:110  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+  99:45   warning  'idx' is defined but never used           @typescript-eslint/no-unused-vars
+
+/home/adminuser/ayush/apps/web/src/components/layout/Navbar.tsx
+  7:46  warning  'Sparkles' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/adminuser/ayush/apps/web/src/components/sections/CTA.tsx
+  4:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/adminuser/ayush/apps/web/src/components/sections/Comparison.tsx
+  55:43  warning  'i' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/adminuser/ayush/apps/web/src/components/sections/Features.tsx
+  4:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/adminuser/ayush/apps/web/src/components/sections/Hero.tsx
+  6:26  warning  'ArrowRight' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/adminuser/ayush/apps/web/src/components/sections/HowItWorks.tsx
+  4:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/adminuser/ayush/apps/web/src/components/sections/Problem.tsx
+  5:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+  6:46  warning  'Users' is defined but never used   @typescript-eslint/no-unused-vars
+
+✖ 20 problems (2 errors, 18 warnings)
+
+npm ERR! Lifecycle script `lint` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: web@0.1.0 
+npm ERR!   at location: /home/adminuser/ayush/apps/web 
