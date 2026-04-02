@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Download, Play, ArrowRight, ShieldCheck, Zap, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -61,10 +62,12 @@ export function Hero() {
                 <Download className="w-6 h-6 group-hover:translate-y-1 transition-transform" />
                 Download App
               </Button>
-              <Button size="lg" variant="outline" className="w-full sm:w-auto h-16 px-10 text-xl font-bold rounded-2xl glass hover:bg-primary/5 active:scale-95 transition-all gap-3">
-                <Play className="w-6 h-6 text-primary fill-primary" />
-                See Impact
-              </Button>
+              <Link href="/impact" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="w-full h-16 px-10 text-xl font-bold rounded-2xl glass hover:bg-primary/5 active:scale-95 transition-all gap-3">
+                  <Play className="w-6 h-6 text-primary fill-primary" />
+                  See Impact
+                </Button>
+              </Link>
             </motion.div>
 
             {/* Localized Floating Info */}
