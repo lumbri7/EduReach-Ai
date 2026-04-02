@@ -98,17 +98,17 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-md z-[51] md:hidden"
+              className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[51] md:hidden"
             />
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-xs bg-white dark:bg-slate-950 border-l border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.3)] z-[52] md:hidden flex flex-col p-8 gap-8 overflow-y-auto"
+              transition={{ type: "spring", damping: 25, stiffness: 200, restDelta: 0.5 }}
+              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-xs bg-white dark:bg-slate-950 border-l border-primary/20 shadow-2xl z-[52] md:hidden flex flex-col p-6 gap-6 overflow-y-auto transform-gpu"
             >
-              <div className="flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
+              <div className="flex items-center justify-between shrink-0">
+                <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
                   <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20">
                     <BookOpen className="w-6 h-6" />
                   </div>
@@ -116,44 +116,48 @@ export function Navbar() {
                 </Link>
                 <button 
                   onClick={() => setIsOpen(false)}
-                  className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 text-foreground transition-colors"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center bg-slate-100 dark:bg-slate-900 text-foreground active:scale-90 transition-transform"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
-              <div className="flex flex-col gap-3 py-4">
-                {navLinks.map((link) => (
-                  <Link
+              <div className="flex flex-col gap-2 py-4">
+                {navLinks.map((link, i) => (
+                  <motion.div
                     key={link.name}
-                    href={link.href}
-                    className={cn(
-                      "text-2xl font-black p-5 rounded-2xl transition-all active:scale-95 flex items-center justify-between group",
-                      pathname === link.href 
-                        ? "bg-primary text-primary-foreground shadow-xl shadow-primary/20" 
-                        : "text-foreground/70 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-foreground"
-                    )}
-                    onClick={() => setIsOpen(false)}
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.03, duration: 0.3 }}
                   >
-                    {link.name}
-                    <Sparkles className={cn(
-                      "w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity",
-                      pathname === link.href ? "opacity-100" : ""
-                    )} />
-                  </Link>
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "text-2xl font-black p-5 rounded-2xl transition-all active:scale-95 flex items-center justify-between group",
+                        pathname === link.href 
+                          ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
+                          : "text-foreground/70 hover:bg-slate-50 dark:hover:bg-slate-900"
+                      )}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                      <Sparkles className={cn(
+                        "w-5 h-5 transition-opacity",
+                        pathname === link.href ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                      )} />
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
               
-              <div className="mt-auto pt-8 border-t border-border/50 space-y-6">
-                <Button className="w-full h-16 rounded-2xl gap-4 text-xl font-black uppercase tracking-widest shadow-2xl shadow-primary/30 active:scale-95 transition-all">
+              <div className="mt-auto pt-6 border-t border-border/10 space-y-4 shrink-0">
+                <Button className="w-full h-16 rounded-2xl gap-3 text-lg font-black uppercase tracking-widest bg-primary hover:bg-primary/90 shadow-xl shadow-primary/20 active:scale-95 transition-all">
                   <Download className="w-6 h-6" />
-                  Download App
+                  Get App
                 </Button>
-                <div className="text-center space-y-2">
-                  <p className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em]">
-                    Equal Access <span className="italic text-primary">For All</span>
-                  </p>
-                </div>
+                <p className="text-center text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">
+                  Equal Access For All
+                </p>
               </div>
             </motion.div>
           </>
