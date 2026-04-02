@@ -30,12 +30,13 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        (scrolled || isOpen) ? "glass py-3 shadow-md border-b" : "bg-transparent py-5"
-      )}
-    >
+    <>
+      <nav
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          (scrolled || isOpen) ? "glass py-3 shadow-md border-b" : "bg-transparent py-5"
+        )}
+      >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shadow-lg group-hover:scale-110 transition-transform">
@@ -88,8 +89,9 @@ export function Navbar() {
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
+      </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Outside of Nav Tag for better stacking context */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -98,14 +100,14 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[51] md:hidden"
+              className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[101] md:hidden"
             />
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200, restDelta: 0.5 }}
-              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-xs bg-white dark:bg-slate-950 border-l border-primary/20 shadow-2xl z-[52] md:hidden flex flex-col p-6 gap-6 overflow-y-auto transform-gpu"
+              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-xs bg-white dark:bg-slate-950 border-l border-primary/20 shadow-2xl z-[102] md:hidden flex flex-col p-6 gap-6 overflow-y-auto transform-gpu"
             >
               <div className="flex items-center justify-between shrink-0">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
@@ -163,6 +165,6 @@ export function Navbar() {
           </>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 }
